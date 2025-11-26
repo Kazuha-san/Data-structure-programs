@@ -46,6 +46,15 @@ void inorder(Node* root) {
     inorder(root->right);
 }
 
+void freeTree(Node* root) {
+    if (root == NULL) return;
+
+    freeTree(root->left);
+    freeTree(root->right);
+    delete root;
+}
+
+
 // Menu
 int main() {
     Node* root = NULL;
@@ -89,6 +98,7 @@ int main() {
 
         case 4:
             cout << "Exiting...\n";
+            freeTree(root);
             return 0;
 
         default:
